@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PokeApi</title>
+		<link rel="stylesheet" href="./css/resetCss.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<script type="module" src="./js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<article class="menu">
+				<button class="btn btn--menu">
+					<div class="btn--menuBar"></div>
+				</button>
+				<nav class="menu__nav">
+					<ul class="menu__menu">
+						<li class="menu__item">
+							<a href="#" class="menu__link" id="home">
+								<img
+									class="menu__icon"
+									src="./assets/src/icon/iconHome.svg"
+									alt="icon home"
+								/>
+								<span> Home </span>
+							</a>
+						</li>
+						<li class="menu__item">
+							<form action="#" class="search" id="form">
+								<div class="search__suggestions">
+									<div class="search__content">
+										<input
+											type="search"
+											name="search"
+											placeholder="search..."
+											class="search__text"
+										/>
+										<button type="submit" class="search__btnSearch">
+											<img
+												class="menu__icon--search"
+												src="./assets/src/icon/iconSearch.svg"
+												alt="icon search"
+											/>
+										</button>
+									</div>
+									<ul id="suggestions" class="search__contentSuggestions"></ul>
+								</div>
+							</form>
+						</li>
+					</ul>
+				</nav>
+				<div class="contentDarMode">
+					<button class="btn btn--DarkMode" id="sun">
+						<img src="./assets/src/icon/sun.svg" alt="icon sun" />
+					</button>
+					<button class="btn btn--DarkMode" id="moon">
+						<img src="./assets/src/icon/moon.svg" alt="icon moon" />
+					</button>
+				</div>
+			</article>
+		</header>
+		<main class="main" id="main"></main>
+		<footer class="contentPagination" id="pagination"></footer>
+		<div class="modal" id="modal">
+			<article class="modal__pokedex">
+				<article class="modal__top">
+					<img
+						src="./assets/src/img/pokedexTop.svg"
+						alt="top part of the pokedex"
+					/>
+				</article>
+				<button class="modal__btn">
+					<div class="modal__iconClose"></div>
+				</button>
+				<section class="modal__info">
+					<header class="modal__img">
+						<img
+							src="./assets/src/icon/pokemonNull.svg"
+							alt="this pokemon does not have a picture"
+						/>
+					</header>
+					<main class="modal__contentStats">
+						<h2 class="modal__name">
+							<span class="modal__nameNumber"></span>
+							<span class="modal__nameText"></span>
+						</h2>
+						<ul class="modal__stats">
+							<li class="modal__st modal__st--types">
+								<b class="modal__stName">Types</b>
+								<div class="modal__contentType"></div>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">HP</b>
+								<span id="hp" class="modal__statsValue">78</span>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">Attack</b>
+								<span id="Attack" class="modal__statsValue">84</span>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">Defense</b>
+								<span id="defense" class="modal__statsValue">78</span>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">Special-attack</b>
+								<span id="S_A" class="modal__statsValue">109</span>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">Special-defense</b>
+								<span id="S_D" class="modal__statsValue">85</span>
+							</li>
+							<li class="modal__st">
+								<b class="modal__stName">Speed</b>
+								<span id="speed" class="modal__statsValue">100</span>
+							</li>
+						</ul>
+					</main>
+				</section>
+				<article class="modal__bottom">
+					<img
+						src="./assets/src/img/pokedexBottom.svg"
+						alt="bottom part of the pokedex"
+					/>
+				</article>
+			</article>
+		</div>
+		<div class="loader">
+			<svg class="loader__icon" viewBox="0 0 320 320" fill="none">
+				<mask id="path-1-inside-1_391_2" fill="white">
+					<path
+						d="M286 160C286 193.417 272.725 225.466 249.095 249.095C225.466 272.725 193.417 286 160 286C126.583 286 94.5341 272.725 70.9046 249.095C47.275 225.466 34 193.417 34 160L160 160H286Z"
+					/>
+				</mask>
+				<path
+					d="M286 160C286 193.417 272.725 225.466 249.095 249.095C225.466 272.725 193.417 286 160 286C126.583 286 94.5341 272.725 70.9046 249.095C47.275 225.466 34 193.417 34 160L160 160H286Z"
+					class="loader__bottom"
+					mask="url(#path-1-inside-1_391_2)"
+				/>
+				<mask id="path-2-inside-2_391_2" fill="white">
+					<path
+						d="M34 160C34 126.583 47.275 94.5341 70.9045 70.9045C94.5341 47.275 126.583 34 160 34C193.417 34 225.466 47.275 249.095 70.9045C272.725 94.5341 286 126.583 286 160L160 160L34 160Z"
+					/>
+				</mask>
+				<path
+					d="M34 160C34 126.583 47.275 94.5341 70.9045 70.9045C94.5341 47.275 126.583 34 160 34C193.417 34 225.466 47.275 249.095 70.9045C272.725 94.5341 286 126.583 286 160L160 160L34 160Z"
+					class="loader__top"
+					mask="url(#path-2-inside-2_391_2)"
+				/>
+				<circle cx="160" cy="160" r="20" class="loader__circle" />
+			</svg>
+			<h1 class="loader__title">Loading...</h1>
+		</div>
+		<div class="pokemonNotFound" id="pokemonNotFound">
+			<section class="pokemonNotFound__content">
+				<spam>
+					<img
+						class="pokemonNotFound__icon"
+						src="./assets/src/icon/pokemonNull.svg"
+						alt="pokemon not found"
+					/>
+				</spam>
+				<h1 class="pokemonNotFound__title">Pokemon not found</h1>
+			</section>
+		</div>
+		<template id="card">
+			<section class="card">
+				<div class="card__elements">
+					<div class="card__elementIcon"></div>
+					<div class="card__elementIcon"></div>
+				</div>
+				<header class="card__contentImg">
+					<img
+						src="./assets/src/icon/pokemonNull.svg"
+						alt="this pokemon does not have a picture"
+						class="card__img"
+					/>
+				</header>
+				<footer class="card__contentName">
+					<p class="card__name"></p>
+				</footer>
+			</section>
+		</template>
+	</body>
+</html>
