@@ -1,5 +1,5 @@
 import { paginationPrint, printCard, arrayData, clear } from './printApi.js';
-import { loader } from './props.js';
+import { loader } from './loader.js';
 export const pokeApi = async url => {
 	try {
 		loader(true);

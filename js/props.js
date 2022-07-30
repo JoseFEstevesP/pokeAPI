@@ -1,4 +1,3 @@
-import { pokeApi } from './api.js';
 export const element = {
 	bug: './assets/src/icon/element/bug.svg',
 	dark: './assets/src/icon/element/dark.svg',
@@ -43,7 +42,7 @@ export const touppercase = name => {
 	return name[0].toUpperCase() + name.slice(1);
 };
 export const loader = load => {
-	const loaderMain = document.querySelector('.loader');
+	const loaderMain = query('.loader');
 	if (load) {
 		document.body.classList.add('scrollNone');
 		loaderMain.classList.remove('loader--show');
@@ -59,25 +58,9 @@ export const arrayOrder = array => {
 		return a.id - b.id;
 	});
 };
-export const pokemonNotFound = () => {
-	const pokemonNotFound = document.getElementById('pokemonNotFound');
-	document.body.classList.toggle('scrollNone');
-	pokemonNotFound.classList.toggle('pokemonNotFound--show');
-	pokemonNotFound.firstElementChild.classList.toggle(
-		'pokemonNotFound__content--show'
-	);
-	setTimeout(() => {
-		id({ id: 'form' }).firstElementChild.value = '';
-		document.body.classList.toggle('scrollNone');
-		pokemonNotFound.classList.toggle('pokemonNotFound--show');
-		pokemonNotFound.firstElementChild.classList.toggle(
-			'pokemonNotFound__content--show'
-		);
-		pokeApi('https://pokeapi.co/api/v2/pokemon');
-	}, 2000);
-};
 export const id = id => document.getElementById(id);
 export const query = query => document.querySelector(query);
+export const queryAll = queryAll => document.querySelectorAll(queryAll)
 export const arrayResults = ({ array, include }) => {
 	return array.filter(index => index.name.includes(include));
 };

@@ -1,7 +1,6 @@
-import { id } from './props.js';
+import { id,arrayResults } from './props.js';
 import { paginationPrint } from './printApi.js';
 import { pokemonDate } from './api.js';
-import { pokemonNotFound, arrayResults } from './props.js';
 const form = id('form');
 const suggestions = id('suggestions');
 form[0].addEventListener('input', e => {
@@ -44,4 +43,21 @@ export const dataAutocomplete = async url => {
 	} catch (error) {
 		console.error(error);
 	}
+};
+const pokemonNotFound = () => {
+	const pokemonNotFound = document.getElementById('pokemonNotFound');
+	document.body.classList.toggle('scrollNone');
+	pokemonNotFound.classList.toggle('pokemonNotFound--show');
+	pokemonNotFound.firstElementChild.classList.toggle(
+		'pokemonNotFound__content--show'
+	);
+	setTimeout(() => {
+		id('form').firstElementChild.value = '';
+		document.body.classList.toggle('scrollNone');
+		pokemonNotFound.classList.toggle('pokemonNotFound--show');
+		pokemonNotFound.firstElementChild.classList.toggle(
+			'pokemonNotFound__content--show'
+		);
+		pokeApi('https://pokeapi.co/api/v2/pokemon');
+	}, 2000);
 };

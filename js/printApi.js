@@ -1,4 +1,5 @@
-import { element, arrayOrder, loader } from './props.js';
+import { element, arrayOrder } from './props.js';
+import { loader } from './loader.js';
 const cardTemplate = document.getElementById('card').content;
 const main = document.getElementById('main');
 const pagination = document.getElementById('pagination');
@@ -50,9 +51,7 @@ export const paginationPrint = ({ data, print = true }) => {
 	const btnNext = document.createElement('a');
 	btnNext.setAttribute('href', '#');
 	btnNext.setAttribute('data-url', data.next);
-	btnNext.classList.add('btn');
-	btnNext.classList.add('btn--pagination');
-	btnNext.classList.add('btn--paginationShow');
+	btnNext.className = 'btn btn--pagination btn--paginationShow';
 	const iconNext = document.createElement('img');
 	iconNext.setAttribute('src', './assets/src/icon/arrowRight.svg');
 	iconNext.setAttribute('alt', 'icon next');
@@ -60,9 +59,7 @@ export const paginationPrint = ({ data, print = true }) => {
 	const btnPrevious = document.createElement('a');
 	btnPrevious.setAttribute('href', '#');
 	btnPrevious.setAttribute('data-url', data.previous);
-	btnPrevious.classList.add('btn');
-	btnPrevious.classList.add('btn--pagination');
-	btnPrevious.classList.add('btn--paginationShow');
+	btnPrevious.className = 'btn btn--pagination btn--paginationShow';
 	const iconPrevious = document.createElement('img');
 	iconPrevious.setAttribute('src', './assets/src/icon/arrowLeft.svg');
 	iconPrevious.setAttribute('alt', 'icon previous');
