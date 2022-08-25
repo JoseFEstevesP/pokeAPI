@@ -1,6 +1,6 @@
-import { id,arrayResults } from './props.js';
+import { id, arrayResults } from './props.js';
 import { paginationPrint } from './printApi.js';
-import { pokemonDate } from './api.js';
+import { pokemonDate, pokeApi } from './api.js';
 const form = id('form');
 const suggestions = id('suggestions');
 form[0].addEventListener('input', e => {

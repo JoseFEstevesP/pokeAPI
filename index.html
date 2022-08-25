@@ -4,18 +4,28 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>PokeApi</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="./css/resetCss.css" />
 		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/darMode.css">
+		<link rel="stylesheet" href="./css/menu.css">
+		<link rel="stylesheet" href="./css/filter.css">
+		<link rel="stylesheet" href="./css/search.css">
+		<link rel="stylesheet" href="./css/card.css">
+		<link rel="stylesheet" href="./css/modal.css">
+		<link rel="stylesheet" href="./css/notFound.css">
 		<script type="module" src="./js/main.js"></script>
 	</head>
 	<body>
 		<header>
 			<article class="menu">
-				<button class="btn btn--menu">
-					<div class="btn--menuBar"></div>
-				</button>
+				<div class="menu__contentBar">
+					<button class="btn menu__btn" type="button" title="button">
+						<div class="menu__bar"></div>
+					</button>
+				</div>
 				<nav class="menu__nav">
-					<ul class="menu__menu">
+					<ul class="menu__ul">
 						<li class="menu__item">
 							<a href="#" class="menu__link" id="home">
 								<img
@@ -24,6 +34,16 @@
 									alt="icon home"
 								/>
 								<span> Home </span>
+							</a>
+						</li>
+						<li class="menu__item">
+							<a href="./game.html" class="menu__link" id="home">
+								<img
+									class="menu__icon menu__icon--game"
+									src="./assets/src/icon/mando.svg"
+									alt="icon game"
+								/>
+								<span> Game </span>
 							</a>
 						</li>
 						<li class="menu__item">
@@ -108,7 +128,7 @@
 						</li>
 					</ul>
 				</nav>
-				<div class="contentDarMode">
+				<div class="darMode">
 					<button class="btn btn--DarkMode" id="sun">
 						<img src="./assets/src/icon/sun.svg" alt="icon sun" />
 					</button>
@@ -222,7 +242,7 @@
 			</section>
 		</div>
 		<template id="card">
-			<section class="card card--pokemon">
+			<section class="card">
 				<div class="card__elements">
 					<div class="card__elementIcon"></div>
 					<div class="card__elementIcon"></div>
@@ -235,7 +255,7 @@
 					/>
 				</header>
 				<footer class="card__contentName">
-					<p class="card__name"></p>
+					<h2 class="card__name"></h2>
 				</footer>
 			</section>
 		</template>

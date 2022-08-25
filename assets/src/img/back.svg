@@ -1,7 +1,7 @@
-<svg width="230" height="300" viewBox="0 0 230 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="230" height="300" fill="white"/>
-<rect width="230" height="150" fill="#EC1B23"/>
-<rect y="150" width="230" height="150" fill="#FDFDFD"/>
-<rect y="130" width="230" height="40" fill="#333333"/>
-<circle cx="115" cy="150" r="24.5" fill="#FDFDFD" stroke="#333333" stroke-width="11"/>
+<svg class="card__icon" width="250" height="300" viewBox="0 0 250 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M250 0H0V300H250V0Z" fill="white"/>
+<path d="M250 0H0V150H250V0Z" fill="#EC1B23"/>
+<path d="M250 150H0V300H250V150Z" fill="#FDFDFD"/>
+<path d="M250 130H0V170H250V130Z" fill="#333333"/>
+<path d="M125 174.5C139.708 174.5 151.631 163.531 151.631 150C151.631 136.469 139.708 125.5 125 125.5C110.292 125.5 98.3696 136.469 98.3696 150C98.3696 163.531 110.292 174.5 125 174.5Z" fill="#FDFDFD" stroke="#333333" stroke-width="11"/>
 </svg>

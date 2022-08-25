@@ -16,14 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	dataAutocomplete('https://pokeapi.co/api/v2/pokemon?limit=10000');
 });
 document.addEventListener('click', e => {
-	if (e.target.matches('#home')) {
+	if (e.target.parentElement.matches('#home') || e.target.matches('#home')) {
 		btnTypes(allType);
 		pokeApi('https://pokeapi.co/api/v2/pokemon');
 		allType.classList.add('filter__type--hidden');
 	}
-	if (e.target.matches('.btn--menu')) {
-		e.target.firstElementChild.classList.toggle('btn--menuBarShow');
-		e.target.nextElementSibling.classList.toggle('menu__nav--show');
+	if (e.target.matches('.menu__btn')) {
+		e.target.firstElementChild.classList.toggle('menu__bar--show')
+		e.target.offsetParent.firstElementChild.nextElementSibling.classList.toggle(
+			'menu__nav--show'
+		);
 	}
 	if (e.target.matches('#sun')) {
 		theme({

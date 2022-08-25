@@ -1,0 +1,127 @@
+.menu {
+	width: 100%;
+	height: 3.125em;
+	font-size: 1rem;
+	z-index: 1;
+	position: relative;
+}
+.menu__contentBar {
+	padding: 0.625em;
+}
+@media screen and (min-width: 768px) {
+	.menu__contentBar {
+		padding: 0;
+	}
+}
+.menu__contentBar--game {
+	padding: 0;
+}
+.menu__btn {
+	width: 2.5em;
+	height: 2.5em;
+}
+@media screen and (min-width: 768px) {
+	.menu__btn {
+		display: none;
+	}
+}
+.menu__btn--game {
+	display: none;
+}
+.menu__bar {
+	width: 1.875em;
+	height: 0.25em;
+	border-radius: 0.3125em;
+	background-color: var(--color-primary);
+	position: relative;
+}
+.menu__bar::before,
+.menu__bar::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 0.25em;
+	top: -0.5em;
+	border-radius: 0.3125em;
+	background-color: var(--color-primary);
+	transition: transform 0.3s;
+}
+.menu__bar::after {
+	top: 0.5em;
+}
+.menu__bar--show {
+	background-color: transparent;
+}
+.menu__bar--show::before,
+.menu__bar--show::after {
+	top: 0;
+	transform: rotate(45deg);
+}
+.menu__bar--show::after {
+	transform: rotate(-45deg);
+}
+.menu__nav {
+	transform: translateX(-100%);
+	transition: transform 0.2s;
+}
+@media screen and (min-width: 768px) {
+	.menu__nav {
+		transform: translateX(0);
+	}
+}
+.menu__nav--show {
+	transform: translateX(0);
+}
+.menu__ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background-color: var(--grisClaro);
+}
+@media screen and (min-width: 768px) {
+	.menu__ul {
+		height: 3.125em;
+		display: flex;
+		justify-content: space-evenly;
+	}
+}
+.menu__item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.3125em 0;
+	border-bottom: 0.125em solid var(--color-primary);
+}
+.menu__item:last-child {
+	border-bottom: none;
+}
+@media screen and (min-width: 768px) {
+	.menu__item {
+		border-bottom: none;
+	}
+}
+.menu__link {
+	width: 100%;
+	height: 2.5em;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.menu__link--game {
+	height: 3.125em;
+}
+.menu__icon {
+	width: 1em;
+	height: 1em;
+	margin-right: 0.3125em;
+}
+.menu__icon--search {
+	width: 2.1875em;
+	height: 2.1875em;
+}
+.menu__icon--game {
+	width: 1.5em;
+	height: 1.5em;
+}
