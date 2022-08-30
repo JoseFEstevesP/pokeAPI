@@ -1,17 +1,16 @@
 import { pokemonDate } from './api.js';
 import { paginationPrint } from './printApi.js';
-import { pokemonTypes } from './types.js';
 const paginationContent = document.getElementById('pagination');
 let currentPage = 1;
 let cardPrePage = 20;
 export const totNumPage = array => Math.ceil(array.length / cardPrePage);
-export const previousPage = () => {
+export const previousPage = (pokemonTypes) => {
 	if (currentPage > 1) {
 		currentPage--;
 		change({ page: currentPage, arrayData: pokemonTypes });
 	}
 };
-export const nextPage = () => {
+export const nextPage = (pokemonTypes) => {
 	if (currentPage < totNumPage(pokemonTypes)) {
 		currentPage++;
 		change({ page: currentPage, arrayData: pokemonTypes });
@@ -30,9 +29,9 @@ export const change = ({ page, arrayData }) => {
 		}
 	}
 	paginationPrint({ print: false });
-	printPagination({ page: page, arrayData: arrayData });
+	drawPagination({ page: page, arrayData: arrayData });
 };
-const printPagination = ({ page, arrayData }) => {
+const drawPagination = ({ page, arrayData }) => {
 	paginationContent.textContent = '';
 	const btnNext = document.createElement('a');
 	btnNext.setAttribute('href', '#');
@@ -57,4 +56,5 @@ const printPagination = ({ page, arrayData }) => {
 	page === totNumPage(arrayData)
 		? btnNext.classList.add('btn--paginationShow')
 		: btnNext.classList.remove('btn--paginationShow');
+		// loader(false)
 };

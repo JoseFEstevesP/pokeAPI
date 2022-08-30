@@ -1,8 +1,8 @@
-import { element, arrayOrder } from './props.js';
+import { element, arrayOrder,id} from './props.js';
 import { loader } from './loader.js';
-const cardTemplate = document.getElementById('card').content;
-const main = document.getElementById('main');
-const pagination = document.getElementById('pagination');
+const cardTemplate = id('card').content;
+const main = id('main');
+const pagination = id('pagination');
 export let arrayData = [];
 const fragment = document.createDocumentFragment();
 export const printCard = arraySelect => {
@@ -10,17 +10,18 @@ export const printCard = arraySelect => {
 	arrayOrder(arraySelect);
 	arraySelect.forEach(data => {
 		const clone = cardTemplate.cloneNode(true);
-		const card = clone.querySelector('.card');
-		const cardElements = clone.querySelector('.card__elements');
-		const cardImg = clone.querySelector('.card__img');
-		const cardName = clone.querySelector('.card__name');
-		card.setAttribute('data-id', data.id);
+		const $ = a => clone.querySelector(a);
+		const card = $('.card');
+		const cardElements = $('.card__elements');
+		const cardImg = $('.card__img');
+		const cardName = $('.card__name');
+		card.dataset.id = data.id;
 		data.types.forEach(item => {
 			const div = document.createElement('div');
 			const img = document.createElement('img');
 			div.classList.add('card__elementIcon');
-			img.setAttribute('src', element[item.type.name]);
-			img.setAttribute('alt', `the icon is ${item.type.name}`);
+			img.src = element[item.type.name];
+			img.alt = `the icon is ${item.type.name}`;
 			img.setAttribute('title', `${item.type.name}`);
 			div.appendChild(img);
 			cardElements.appendChild(div);
@@ -30,8 +31,8 @@ export const printCard = arraySelect => {
 			data.sprites.other.home.front_default ??
 			data.sprites.back_default ??
 			'./assets/src/icon/pokemonNull.svg';
-		cardImg.setAttribute('src', src);
-		cardImg.setAttribute('alt', `this img is ${data.name}`);
+		cardImg.src = src;
+		cardImg.alt = `this img is ${data.name}`;
 		cardImg.setAttribute('loading', 'lazy');
 		cardImg.setAttribute('decoding', 'async');
 		cardName.textContent = data.name.split('-').join(' ');

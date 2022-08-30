@@ -5,7 +5,6 @@ import { id, arrayResults, queryAll } from './props.js';
 import { dataAutocomplete, arrayDataName } from './filter.js';
 import { modalPokedex, closeModal } from './modalPokedex.js';
 import { types, typesSelectApi, btnTypes } from './types.js';
-import { nextPage, previousPage } from './paginationData.js';
 import { loader } from './loader.js';
 const form = id('form');
 const suggestions = id('suggestions');
@@ -22,7 +21,7 @@ document.addEventListener('click', e => {
 		allType.classList.add('filter__type--hidden');
 	}
 	if (e.target.matches('.menu__btn')) {
-		e.target.firstElementChild.classList.toggle('menu__bar--show')
+		e.target.firstElementChild.classList.toggle('menu__bar--show');
 		e.target.offsetParent.firstElementChild.nextElementSibling.classList.toggle(
 			'menu__nav--show'
 		);
@@ -80,13 +79,5 @@ document.addEventListener('click', e => {
 		typesSelectApi(e.target.dataset.url);
 		e.target.classList.add('filter__type--hidden');
 		btnTypes(e.target);
-	}
-	if (e.target.matches('#nextTypes')) {
-		loader(true);
-		nextPage();
-	}
-	if (e.target.matches('#previousTypes')) {
-		loader(true);
-		previousPage();
 	}
 });

@@ -1,5 +1,6 @@
 import { colorTypes, query } from './props.js';
-import { change } from './paginationData.js';
+import { change, nextPage, previousPage } from './paginationData.js';
+import { loader } from './loader.js';
 const filterTypeContent = query('.filter__option');
 export const types = async url => {
 	try {
@@ -53,3 +54,13 @@ export const btnTypes = btn => {
 	btnType.textContent = name;
 	filterContent.appendChild(btnType);
 };
+document.addEventListener('click', e => {
+	if (e.target.matches('#nextTypes')) {
+		loader(true);
+		nextPage(pokemonTypes);
+	}
+	if (e.target.matches('#previousTypes')) {
+		loader(true);
+		previousPage(pokemonTypes);
+	}
+});

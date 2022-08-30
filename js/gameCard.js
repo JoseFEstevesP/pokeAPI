@@ -10,10 +10,10 @@ const drawRanking = rankingData => {
 	const fragment = document.createDocumentFragment();
 	for (const position of rankingData) {
 		const clone = rankingTemplate.cloneNode(true);
-		clone.querySelector('.scoreboard__user').textContent = position.name;
-		clone.querySelector('.scoreboard__totalPoints').textContent =
-			position.point;
-		clone.querySelector('.scoreboard__btn').dataset.id = position.id;
+		const $ = a => clone.querySelector(a);
+		$('.scoreboard__user').textContent = position.name;
+		$('.scoreboard__totalPoints').textContent = position.point;
+		$('.scoreboard__btn').dataset.id = position.id;
 		fragment.appendChild(clone);
 	}
 	scoreboard.appendChild(fragment);
@@ -35,11 +35,6 @@ const pokeData = async url => {
 	dataPoke.push(data);
 	drawCards({ data: dataPoke });
 };
-const difficultyGame = {
-	easy: 10,
-	normal: 20,
-	hard: 30,
-};
 const cardGameTemplate = id('cardGame').content;
 const gameContent = id('GameContent');
 const drawCards = ({ data }) => {
@@ -47,7 +42,7 @@ const drawCards = ({ data }) => {
 	dataPokemon.sort(() => Math.random() - 0.5);
 	const fragment = document.createDocumentFragment();
 	gameContent.textContent = '';
-	dataPokemon.forEach(i=>{
+	dataPokemon.forEach(i => {
 		const clone = cardGameTemplate.cloneNode(true);
 		const $ = a => clone.querySelector(a);
 		$('.card').dataset.id = i.id;
@@ -55,7 +50,7 @@ const drawCards = ({ data }) => {
 		$('.card__img').src = i.sprites.other.dream_world.front_default;
 		$('.card__title').textContent = i.name;
 		fragment.appendChild(clone);
-	})
+	});
 	gameContent.appendChild(fragment);
 	const allCardsElement = document.querySelectorAll('.card');
 	if (allCardsElement.length === totalCard * 2) {
@@ -66,7 +61,7 @@ const drawCards = ({ data }) => {
 export const generatePokeCard = totalCard => {
 	const getRandomId = (min = 1, max = 151) =>
 		Math.floor(Math.random() * (max - min) + min);
-const	currentCards= [
+	const currentCards = [
 		...new Set(Array.from({ length: totalCard }).map(() => getRandomId())),
 	];
 	if (currentCards.length < totalCard) {
@@ -84,12 +79,8 @@ const allCard = (allCardsElement, play = false) => {
 	});
 	cardPlay = play;
 };
-
 let firstCard = undefined;
 let secondCard = undefined;
-const pointsElement = id('points');
-const comboElement = id('combo');
-const totalPoint = id('totalPoint');
 let fails = 0;
 let points = 0;
 let combo = 1;
@@ -97,7 +88,7 @@ const setPoints = (error = false) => {
 	if (!error) {
 		points = points + combo * 10;
 		combo++;
-		pointsElement.textContent = points;
+		id('points').textContent = points;
 	} else {
 		fails++;
 		id('pointsFails').textContent = fails;
@@ -123,8 +114,8 @@ const setCardSelect = (firstCardSelected, secondCardSelected) => {
 	}
 	firstCard = undefined;
 	secondCard = undefined;
-	comboElement.textContent = `X ${combo}`;
-	totalPoint.textContent = points - fails;
+	id('combo').textContent = `X ${combo}`;
+	id('totalPoint').textContent = points - fails;
 };
 const checkPokeWin = () => {
 	const pokewin = document.querySelectorAll('.card[data-pokewin="true"]');
@@ -144,8 +135,12 @@ export const card = card => {
 	}
 };
 let nameEmpty;
-const from = id('from');
-from.addEventListener('submit', e => {
+const difficultyGame = {
+	easy: 10,
+	normal: 15,
+	hard: 20,
+};
+id('from').addEventListener('submit', e => {
 	e.preventDefault();
 	const { name, difficulty } = e.target;
 	name.value.trim() === ''
@@ -156,17 +151,12 @@ from.addEventListener('submit', e => {
 	drawRanking(ranking);
 	id('modal').classList.remove('modal--show');
 });
-window.addEventListener('load', () => {
+export const deleteRanking = element => {
+	ranking = ranking.filter(r => r.id !== element.dataset.id);
+	drawRanking(ranking);
+};
+export const loadGetLocalStorage = () => {
 	if (localStorage.getItem('ranking')) {
 		ranking = JSON.parse(localStorage.getItem('ranking'));
 	}
-});
-document.addEventListener('click', e => {
-	if (e.target.classList.contains('scoreboard__btn')) {
-		ranking = ranking.filter(r => r.id !== e.target.dataset.id);
-		drawRanking(ranking);
-	}
-	if (e.target.matches('#restart')) {
-		location.reload();
-	}
-});
+};

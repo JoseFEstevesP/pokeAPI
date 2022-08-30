@@ -1,6 +1,7 @@
-import { id, arrayResults } from './props.js';
+import { id, arrayResults, loader } from './props.js';
 import { paginationPrint } from './printApi.js';
 import { pokemonDate, pokeApi } from './api.js';
+import { change } from './paginationData.js';
 const form = id('form');
 const suggestions = id('suggestions');
 form[0].addEventListener('input', e => {
@@ -26,11 +27,14 @@ form[0].addEventListener('input', e => {
 });
 form.addEventListener('submit', e => {
 	e.preventDefault();
+	suggestions.classList.remove('search__contentSuggestions--show')
 	const { search } = e.target;
+if(!search) return 
 	const searchValue = search.value.trim().toLowerCase().split(' ').join('-');
 	const results = arrayResults({ array: arrayDataName, include: searchValue });
-	paginationPrint({ print: false });
-	results.length === 0 ? pokemonNotFound() : pokemonDate(results);
+	results.length === 0
+		? pokemonNotFound()
+		: change({ page: 1, arrayData: results });
 });
 export let arrayDataName = [];
 export const dataAutocomplete = async url => {

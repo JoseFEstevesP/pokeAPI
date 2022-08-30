@@ -118,7 +118,7 @@
 .modal__img {
 	width: 10em;
 }
-.modal__img-show {
+.modal__img--show {
 	animation-name: scale;
 	animation-duration: 0.4s;
 	animation-timing-function: ease-out;

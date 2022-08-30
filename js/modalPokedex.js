@@ -49,7 +49,7 @@ export const modalPokedex = e => {
 		'modal__bottom--show'
 	);
 	modal.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.classList.toggle(
-		'modal__img-show'
+		'modal__img--show'
 	);
 };
 export const closeModal = () => {
@@ -61,6 +61,6 @@ export const closeModal = () => {
 		'modal__bottom--show'
 	);
 	modal.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.classList.toggle(
-		'modal__img-show'
+		'modal__img--show'
 	);
 };
