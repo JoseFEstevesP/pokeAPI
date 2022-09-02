@@ -5,6 +5,7 @@
 :root {
 	--color-primary: #181818;
 	--color-secondary: #f0f0f0;
+	--focus:#df90ff;
 	--font-primary: system-ui, sans-serif;
 }
 html.dark {
@@ -77,6 +78,9 @@ figure {
 a {
 	display: block;
 	background-color: transparent;
+}
+a:focus {
+	color: var(--focus);
 }
 p a {
 	display: inline;

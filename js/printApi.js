@@ -15,6 +15,7 @@ export const printCard = arraySelect => {
 		const cardElements = $('.card__elements');
 		const cardImg = $('.card__img');
 		const cardName = $('.card__name');
+		card.tabIndex=0
 		card.dataset.id = data.id;
 		data.types.forEach(item => {
 			const div = document.createElement('div');

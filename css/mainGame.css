@@ -51,12 +51,12 @@
 .points__points {
 	font-size: 1.1em;
 }
-.main--game {
+.contentCard--game {
 	grid-area: cards;
 	font-size: 0.5rem;
 }
 @media screen and (min-width: 1024px) {
-	.main--game {
+	.contentCard--game {
 		grid-template-columns: repeat(auto-fit, minmax(15.625em, auto));
 		justify-content: end;
 		align-content: flex-start;

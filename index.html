@@ -1,3 +1,7 @@
+<!-- 
+	TODO: crear el baner de enlace para cuando se envia la pagina por su enlace 
+TODO: crear al archivo md
+-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,13 +11,13 @@
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="./css/resetCss.css" />
 		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/loader.css">
 		<link rel="stylesheet" href="./css/darMode.css">
 		<link rel="stylesheet" href="./css/menu.css">
 		<link rel="stylesheet" href="./css/filter.css">
 		<link rel="stylesheet" href="./css/search.css">
 		<link rel="stylesheet" href="./css/card.css">
 		<link rel="stylesheet" href="./css/modal.css">
-		<link rel="stylesheet" href="./css/notFound.css">
 		<script type="module" src="./js/main.js"></script>
 	</head>
 	<body>
@@ -47,10 +51,10 @@
 							</a>
 						</li>
 						<li class="menu__item">
-							<section class="filter">
+							<section class="filter" >
 								<div class="filter__contentType">
 									<div class="filter__content">
-										<button class="filter__type">All</button>
+										<button tabindex="-1" class="filter__type">All</button>
 									</div>
 									<button class="filter__btn">
 										<svg viewBox="0 0 1024 1024" fill="none">
@@ -139,8 +143,15 @@
 				</div>
 			</article>
 		</header>
-		<main class="main" id="main"></main>
-		<footer class="contentPagination" id="pagination"></footer>
+		<main class="main">
+			<div class="contentCard"id="main"></div>
+			<footer class="contentPagination" id="pagination"></footer>
+		</main>
+		<footer class="footer">
+			<p class="author">
+				Built by <a class="author__link" href="https://josefestevesp.github.io/porfolio/" target="_blank">José Esteves</a>
+			</p>
+		</footer>
 		<div class="modal" id="modal">
 			<article class="modal__pokedex">
 				<article class="modal__top">
@@ -149,7 +160,7 @@
 						alt="top part of the pokedex"
 					/>
 				</article>
-				<button class="modal__btn">
+				<button class="modal__btn" id="modalBtn">
 					<div class="modal__iconClose"></div>
 				</button>
 				<section class="modal__info">
@@ -229,18 +240,6 @@
 				<circle cx="160" cy="160" r="20" class="loader__circle" />
 			</svg>
 			<h1 class="loader__title">Loading...</h1>
-		</div>
-		<div class="pokemonNotFound" id="pokemonNotFound">
-			<section class="pokemonNotFound__content">
-				<spam>
-					<img
-						class="pokemonNotFound__icon"
-						src="./assets/src/icon/pokemonNull.svg"
-						alt="pokemon not found"
-					/>
-				</spam>
-				<h1 class="pokemonNotFound__title">Pokemon not found</h1>
-			</section>
 		</div>
 		<template id="card">
 			<section class="card">

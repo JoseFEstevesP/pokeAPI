@@ -1,9 +1,11 @@
-import { id, arrayResults, loader } from './props.js';
-import { paginationPrint } from './printApi.js';
-import { pokemonDate, pokeApi } from './api.js';
+import { id, queryAll, query, arrayResults } from './props.js';
+import { loader } from './loader.js';
+import { pokeApi } from './api.js';
 import { change } from './paginationData.js';
+import { typesSelectApi,btnTypes } from './types.js';
 const form = id('form');
 const suggestions = id('suggestions');
+const allType = id('allTypes');
 form[0].addEventListener('input', e => {
 	const searchValue = e.target.value.trim().toLowerCase().split(' ').join('-');
 	const results = arrayDataName.filter(index =>
@@ -27,9 +29,9 @@ form[0].addEventListener('input', e => {
 });
 form.addEventListener('submit', e => {
 	e.preventDefault();
-	suggestions.classList.remove('search__contentSuggestions--show')
+	suggestions.classList.remove('search__contentSuggestions--show');
 	const { search } = e.target;
-if(!search) return 
+	if (!search) return;
 	const searchValue = search.value.trim().toLowerCase().split(' ').join('-');
 	const results = arrayResults({ array: arrayDataName, include: searchValue });
 	results.length === 0
@@ -49,19 +51,17 @@ export const dataAutocomplete = async url => {
 	}
 };
 const pokemonNotFound = () => {
-	const pokemonNotFound = document.getElementById('pokemonNotFound');
-	document.body.classList.toggle('scrollNone');
-	pokemonNotFound.classList.toggle('pokemonNotFound--show');
-	pokemonNotFound.firstElementChild.classList.toggle(
-		'pokemonNotFound__content--show'
-	);
-	setTimeout(() => {
-		id('form').firstElementChild.value = '';
-		document.body.classList.toggle('scrollNone');
-		pokemonNotFound.classList.toggle('pokemonNotFound--show');
-		pokemonNotFound.firstElementChild.classList.toggle(
-			'pokemonNotFound__content--show'
-		);
-		pokeApi('https://pokeapi.co/api/v2/pokemon');
-	}, 2000);
+	form.reset();
+	pokeApi('https://pokeapi.co/api/v2/pokemon');
+};
+export const filterBtn = typeElement => {
+	typeElement.classList.add('filter__type--hidden');
+	loader(true);
+	queryAll('.filter__option .filter__type').forEach(btnType => {
+		btnType.classList.remove('filter__type--hidden');
+	});
+	allType.classList.remove('filter__type--hidden');
+	typesSelectApi(typeElement.dataset.url);
+	btnTypes(typeElement);
+	query('.filter__typeOption').classList.remove('filter__typeOption--show');
 };

@@ -3,6 +3,7 @@ import { colorTypes, touppercase, id } from './props.js';
 const modal = id('modal');
 export const modalPokedex = e => {
 	const mq = mq => modal.querySelector(mq);
+	mq('.modal__btn').focus()
 	const img = mq('.modal__img img');
 	img.setAttribute('src', '');
 	img.setAttribute('alt', '');
