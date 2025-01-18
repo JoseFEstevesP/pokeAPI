@@ -37,3 +37,5 @@ document.addEventListener('click', e => {
 		location.reload();
 	}
 });
+
+/* haciendo pruebas */
