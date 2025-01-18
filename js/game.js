@@ -1,6 +1,6 @@
 import theme from './darMode.js';
+import { card, deleteRanking, loadGetLocalStorage } from './gameCard.js';
 import { loader } from './loader.js';
-import { card, deleteRanking,loadGetLocalStorage} from './gameCard.js';
 import { id } from './props.js';
 window.addEventListener('load', () => {
 	loader(false);
@@ -37,3 +37,5 @@ document.addEventListener('click', e => {
 		location.reload();
 	}
 });
+
+/* haciendo pruebas */
