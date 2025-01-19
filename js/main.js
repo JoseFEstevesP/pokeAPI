@@ -1,10 +1,10 @@
-import theme from './darMode.js';
 import { pokeApi, pokemonDate } from './api.js';
+import theme from './darMode.js';
+import { arrayDataName, dataAutocomplete, filterBtn } from './filter.js';
+import { closeModal, modalPokedex } from './modalPokedex.js';
 import { clear, paginationPrint } from './printApi.js';
-import { id, arrayResults, queryAll } from './props.js';
-import { dataAutocomplete, arrayDataName, filterBtn } from './filter.js';
-import { modalPokedex, closeModal } from './modalPokedex.js';
-import { types, btnTypes } from './types.js';
+import { arrayResults, id, queryAll } from './props.js';
+import { btnTypes, types } from './types.js';
 const form = id('form');
 const suggestions = id('suggestions');
 const allType = id('allTypes');
@@ -93,3 +93,4 @@ document.addEventListener('keydown', e => {
 		}
 	}
 });
+/* nueva prueba 19/01/25 */

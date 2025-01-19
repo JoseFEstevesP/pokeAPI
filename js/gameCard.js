@@ -160,3 +160,4 @@ export const loadGetLocalStorage = () => {
 		ranking = JSON.parse(localStorage.getItem('ranking'));
 	}
 };
+/* prueba 2 */
